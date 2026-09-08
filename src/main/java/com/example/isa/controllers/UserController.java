@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")//prvo ce da ide na user pa onda na firstname lastname...
+@RequestMapping("user")//prvo ce da ide na user pa onda na firstname, lastname...
 @RequiredArgsConstructor
 @CrossOrigin
 

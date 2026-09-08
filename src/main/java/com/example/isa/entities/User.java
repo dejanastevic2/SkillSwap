@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY) //da baza automatski generise ID, ako imam Id=1 pa Id=2 onda ce automatski da postoji i Id=3
     private Integer id;
 
-    @Column(name="first-name")
+    @Column(name="first_name")
     private String firstName;
 
     @Column(name="last_name")
@@ -22,6 +22,18 @@ public class User {
 
     @Column(name="email")
     private String email;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "user_skills",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    @com.fasterxml.jackson.annotation.JsonManagedReference
+    private java.util.List<Skill> skills;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
 
 

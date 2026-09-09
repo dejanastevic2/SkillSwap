@@ -8,7 +8,7 @@ const useListData=(url) => {
     const getData=useCallback(async (url) =>{
         setLoading(true);
 
-        let result=await axios.get(url);
+        let result = await axios.get(`http://localhost:8080/${url}`);
 
         setData(result.data);
         setLoading(false);
